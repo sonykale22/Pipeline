@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('number1') {
             steps {
                 echo 'Hello'
             }
@@ -12,7 +12,7 @@ pipeline {
                 sleep60
             }
         }
-		stage('Deploy') {
+		stage('number2') {
             steps {
                 echo 'Hello2'
             }
