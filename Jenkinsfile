@@ -2,23 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('number4') {
+        
+        stage('SCM checkout') {
             steps {
-                echo 'Hello'
+                git 'https://github.com/sonykale22/Pipeline.git'
+              
+
             }
         }
-		stage('Test') {
+        stage('Hello') 
+        {
             steps {
-                sleep 60
-            }
+              withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
+              sh 'mvn compile'
+
+              }
         }
-		stage('number5') {
-            steps {
-                echo 'Hello2'
-            }
-        }
-		
-		
-		
+    }
     }
 }
