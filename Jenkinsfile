@@ -10,14 +10,14 @@ pipeline {
 
             }
         }
-        stage('Hello') 
+        stage('Compile') 
         {
             steps {
               withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn clean package'
+              sh 'mvn compile'
 
-              }
+            }
         }
     }
-    }
+}
 }
