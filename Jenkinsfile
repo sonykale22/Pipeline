@@ -2,22 +2,23 @@ pipeline {
     agent any
 
     stages {
-        
-        stage('SCM checkout') {
+        stage('Build') {
             steps {
-                git 'https://github.com/sonykale22/Pipeline.git'
-              
-
+                echo 'Hello'
             }
         }
-        stage('package') 
-        {
+		stage('Test') {
             steps {
-              withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn clean package'
-
+                sleep60
             }
         }
+		stage('Deploy') {
+            steps {
+                echo 'Hello2'
+            }
+        }
+		
+		
+		
     }
-}
 }
