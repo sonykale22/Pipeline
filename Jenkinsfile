@@ -5,12 +5,12 @@ pipeline {
         
         stage('SCM checkout') {
             steps {
-                git 'https://github.com/sonykale22/maven-project-9181.git'
+                git 'https://github.com/sonykale22/Pipeline.git'
               
 
             }
         }
-        stage('package') 
+        stage('clean package') 
         {
             steps {
               withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
