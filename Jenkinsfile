@@ -35,7 +35,10 @@ pipeline {
         stage('Deploy the code') {
             steps {
                 sshagent(['DevCICD']) {
-                ssh -o StrictHostKeyChecking=no ec2-user@172.31.50.166 "sudo -u tomcat mv /tmp/webapp.war /usr/share/tomcat/webapps/"
+    sh '''
+        scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.50.166:/tmp/
+        ssh ec2-user@172.31.50.166 "sudo mv /tmp/webapp.war /usr/share/tomcat/webapps/"
+    '''
 }
                 }
             }
