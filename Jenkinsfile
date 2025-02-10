@@ -10,14 +10,31 @@ pipeline {
 
             }
         }
-        stage('Hello') 
+        stage('Validate') 
         {
             steps {
               withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
-              sh 'mvn compile'
+              sh 'mvn validate'
 
             }
         }
     }
+    stage('Compile') 
+        {
+            steps {
+              withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
+              sh 'mvn Compile'
+              }
+            }
+            stage('Package the code') 
+        {
+            steps {
+              withMaven(globalMavenSettingsConfig: '', jdk: 'Java_home', maven: 'MVN_Home', mavenSettingsConfig: '', traceability: true) {
+              sh 'mvn clean package'
+              }
+            }
+
+
+}
 }
 }
